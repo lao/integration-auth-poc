@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require('express');
 const axios = require('axios')
-const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 
@@ -37,5 +36,5 @@ app.get('/redirect/dropbox/auth', (req, res) => {
 })
 
 app.listen(3001, () => {
-    console.log('Proxy server listening on port 3001');
+    console.log('Auth Integrations server listening on port 3001');
 });
