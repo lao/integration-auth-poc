@@ -17,7 +17,7 @@ function CallbackPage() {
     }
 
     axios
-      .post(`http://localhost:3001/proxy/dropbox/oauth2/token?code=${code}`)
+      .post(`http://localhost:3001/integration/oauth2/token?code=${code}`)
       .then(function (response) {
         console.log(response.data)
         const accessToken = response.data.access_token;

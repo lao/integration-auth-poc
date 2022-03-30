@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React from "react";
 
 function AuthPage() {
-  const authUrl = `http://localhost:3001/redirect/dropbox/auth`;
+  const authUrl = `http://localhost:3001/integration/authorize`;
 
   return (
     <div>

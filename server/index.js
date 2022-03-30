@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.post('/proxy/dropbox/oauth2/token', (req, res) => {
+app.post('/integration/oauth2/token', (req, res) => {
     const params = new URLSearchParams();
     params.append("code", req.originalUrl.split('?code=')[1])
     params.append("grant_type", "authorization_code");
@@ -31,7 +31,7 @@ app.post('/proxy/dropbox/oauth2/token', (req, res) => {
       });
 });
 
-app.get('/redirect/dropbox/auth', (req, res) => {
+app.get('/integration/authorize', (req, res) => {
     res.status(301).redirect('https://www.dropbox.com/oauth2/authorize'+`?client_id=${process.env.REACT_APP_DROPBOX_CLIENT_ID}&redirect_uri=http://localhost:3000/callback&response_type=code`)
 })
 
