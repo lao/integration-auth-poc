@@ -15,7 +15,7 @@ function HomePage() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [folders, setFolders] = useState<FolderResponse[]>([]);
   const [selectedFolder, setSelectedFolder] = useState<string>("")
-  const authToken = localStorage.getItem("DropboxAccessToken");
+  const authToken = localStorage.getItem("OauthAccessToken");
 
   useEffect(() => {
     if (authToken === null) {

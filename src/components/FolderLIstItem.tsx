@@ -14,7 +14,7 @@ function FolderListItem({ id, label, onClick }: FolderListItemProps) {
 
   useEffect(() => {
     const url = "https://api.dropboxapi.com/2/sharing/list_folder_members";
-    const authToken = localStorage.getItem("DropboxAccessToken");
+    const authToken = localStorage.getItem("OauthAccessToken");
     setEmails("")
 
     axios

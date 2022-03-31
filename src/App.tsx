@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/auth" element={<AuthPage />} />
-          <Route path="/callback" element={<CallbackPage />} />
+          <Route path="/:service/callback" element={<CallbackPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>

@@ -11,7 +11,7 @@ interface FolderInfoProps {
 
 function FolderInfo({ name }: FolderInfoProps) {
   const chunkSize = 64 * 1024;
-  const authToken = localStorage.getItem("DropboxAccessToken");
+  const authToken = localStorage.getItem("OauthAccessToken");
   const [uploadComplete, setUploadComplete] = useState(false)
   const [uploadInProgress, setUploadInProgress] = useState(false)
   const [offset, setOffset] = useState(0)
