@@ -10,19 +10,27 @@ interface FolderResponse {
   label: string
 }
 
+const URLS = {
+  dropbox: 'https://api.dropboxapi.com/2/sharing/list_folders',
+  googleDrive: 'https://www.googleapis.com/drive/v3/files'
+}
+
 function HomePage() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [folders, setFolders] = useState<FolderResponse[]>([]);
   const [selectedFolder, setSelectedFolder] = useState<string>("")
   const authToken = localStorage.getItem("OauthAccessToken");
+  const service = localStorage.getItem("Service");
 
   useEffect(() => {
-    if (authToken === null) {
+    if (authToken === null || service === null) {
+      localStorage.removeItem("OauthAccessToken")
+      localStorage.removeItem("Service")
       navigate("/auth")
       return;
     }
-    const url = "https://api.dropboxapi.com/2/sharing/list_folders";
+    const url = URLS[service];
 
     axios.post(
       url,

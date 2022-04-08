@@ -3,7 +3,7 @@ import React from "react";
 
 function AuthPage() {
   const authDropboxUrl = `http://localhost:3001/integration/authorize/dropbox`;
-  const authGoogleUrl = `http://localhost:3001/integration/authorize/googledrive`;
+  const authGoogleUrl = `http://localhost:3001/integration/authorize/googleDrive`;
 
   return (
     <div>

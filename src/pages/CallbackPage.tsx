@@ -4,7 +4,9 @@ import React, { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 function CallbackPage() {
-  let { service } = useParams();
+  let params = useParams();
+  const {service} = params;
+  console.log(params);
   const search = new URLSearchParams(useLocation().search);
   const code = search.get("code");
   const navigate = useNavigate();
