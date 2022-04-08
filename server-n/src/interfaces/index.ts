@@ -4,4 +4,5 @@ export interface ITokenResult {
   expires_in: number;
   token_type: string;
   service: string;
+  client_id?: string;
 }

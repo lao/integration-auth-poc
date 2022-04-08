@@ -25,9 +25,11 @@ function CallbackPage() {
         //TODO change this functionality to take into account differnet services
         console.log(response.data)
         const accessToken = response.data.access_token;
+        const clientId = response.data.client_id;
 
         localStorage.setItem("OauthAccessToken", accessToken)
         localStorage.setItem("Service", service || '')
+        localStorage.setItem("ClientId", clientId || '')
         navigate(`/${service}`)
       })
       .catch(function (error) {

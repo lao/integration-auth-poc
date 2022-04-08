@@ -27,7 +27,7 @@ export class GoogleDriveService {
       client_id: process.env.GGLED_CLIENT_ID,
       redirect_uri: URLS.googleRedirect,
       response_type: 'code',
-      scope: 'https://www.googleapis.com/auth/drive.file',
+      scope: 'https://www.googleapis.com/auth/drive',
       include_granted_scopes: 'true',
       state: 'pass-through value',
     };
@@ -48,12 +48,15 @@ export class GoogleDriveService {
     // Get access and refresh tokens (if access_type is offline)
     let { tokens } = await oauth2Client.getToken({ code });
 
+    console.log(tokens);
+
     return {
       refresh_token: tokens.refresh_token,
       access_token: tokens.access_token,
       token_type: tokens.token_type,
       expires_in: tokens.expires_in,
       service: 'googleDrive',
+      client_id: process.env.GGLED_CLIENT_ID,
     };
   }
 }

@@ -15,6 +15,11 @@ const URLS = {
   googleDrive: 'https://www.googleapis.com/drive/v3/files'
 }
 
+const methods = {
+  dropbox: 'post',
+  googleDrive: 'get'
+}
+
 function HomePage() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -22,6 +27,7 @@ function HomePage() {
   const [selectedFolder, setSelectedFolder] = useState<string>("")
   const authToken = localStorage.getItem("OauthAccessToken");
   const service = localStorage.getItem("Service");
+  const clientId = localStorage.getItem("ClientId");
 
   useEffect(() => {
     if (authToken === null || service === null) {
@@ -31,13 +37,17 @@ function HomePage() {
       return;
     }
     const url = URLS[service];
+    const method = axios[methods[service]];
 
-    axios.post(
+    method(
       url,
       {},
-      { headers: { Authorization: `Bearer ${authToken}` } }
+      { headers: { Authorization: `Bearer ${authToken}`, Accept: 'application/json' } }
     ).then(result => {
       console.log(result.data)
+      if (!result.data.entries) {
+        return;
+      }
       setFolders(result.data.entries.map((e) => {
         return {
           label: e.name,
