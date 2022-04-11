@@ -27,7 +27,7 @@ export class GoogleDriveService {
       client_id: process.env.GGLED_CLIENT_ID,
       redirect_uri: URLS.googleRedirect,
       response_type: 'code',
-      scope: 'https://www.googleapis.com/auth/drive',
+      scope: 'https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/adexchange.buyer',
       include_granted_scopes: 'true',
       state: 'pass-through value',
     };
